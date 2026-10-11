@@ -1,0 +1,53 @@
+.game-card {
+      background-color: #ffffff;
+      color: #1f2937;
+      padding: 24px;
+      margin: 24px auto;
+      max-width: 340px;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      font-family: Arial, sans-serif;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      border-color: #93c5fd;
+}
+
+.game-card h2 {
+      color: #2563eb;
+      font-size: 24px;
+      margin: 0 0 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #dbeafe;
+}
+
+.game-card p {
+      background-color: #f8fafc;
+      color: #475569;
+      font-size: 15px;
+      padding: 12px 14px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #f1f5f9;
+}
+
+.game-card p:last-child {
+      background-color: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 600;
+}
+
+@media (max-width: 480px) {
+      .game-card {
+            margin: 16px;
+            padding: 18px;
+      }
+
+      .game-card h2 {
+            font-size: 21px;
+      }
+}
