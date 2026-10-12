@@ -1,5 +1,7 @@
 import './App.css'
-import GameCard from './Components/GameCard'
+import GameCard from './Comp_GameCard/GameCard'
+import GameList from './Comp_GameList/GameList'
+import Container from './Comp_Container/Container'
 
 function App() {
   const games = [{
@@ -20,9 +22,16 @@ function App() {
     rating: 9,
     madeYr: new Date(2016, 9, 27),
     is_rec: true,
-  }]
+  }
+]
   return (
-    <GameCard game={games[0]} />
+    <Container>
+      <GameList>
+        <GameCard game={games[0]} />
+        <GameCard game={games[1]} />
+        <GameCard game={games[2]} />
+      </GameList>
+    </Container>
   )
 }
 export default App
