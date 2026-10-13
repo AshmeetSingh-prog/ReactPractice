@@ -7,6 +7,7 @@ const GameCard = (props) => {
       const [inp, setInp] = useState("")
       function changeTitle() {
             setTitle(inp)
+            setInp("")
       }
       return (
             <div className="game-card">
