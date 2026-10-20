@@ -1,7 +1,6 @@
 import "./GameCard.css";
 import { useState } from "react";
 
-
 const GameCard = (props) => {
       const [title, setTitle] = useState(props.game.gname)
       const [inp, setInp] = useState("")
