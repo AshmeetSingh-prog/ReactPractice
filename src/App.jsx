@@ -9,19 +9,19 @@ const initialGames = [{
   id: 1,
   gname: "Manuganu",
   rating: 10,
-  madeYr: new Date(2000, 0, 27),
+  madeYr: new Date(2020, 0, 27),
   is_rec: true,
 }, {
   id: 2,
   gname: "Brawl Stars",
   rating: 5,
-  madeYr: new Date(2009, 6, 15),
+  madeYr: new Date(2019, 6, 15),
   is_rec: true,
 }, {
   id: 3,
   gname: "Minecraft",
   rating: 9,
-  madeYr: new Date(2016, 9, 27),
+  madeYr: new Date(2026, 9, 27),
   is_rec: true,
 }
 ]
@@ -39,14 +39,24 @@ function App() {
   function getFilterDate(data) {
     setFilterDate(data)
   }
+  function changeTitle(id,title){
+    setGames((prevgame)=>{
+      return prevgame.map((game)=>{
+        return game.id === id ? {...game, gname:title} : game
+      })
+    })
+  }
   return (
     <Container>
       <GameForm sendForm={getForm} />
       <Filter sendFilterDate={getFilterDate} filterDate={filterDate} />
       <GameList>
-        {games.map((gameEle) => <GameCard game={gameEle} key={gameEle.id} />)}
+        {games.filter((gameEle) =>
+          filterDate === "all" ? true : gameEle.madeYr.getFullYear().toString() === filterDate
+        )
+          .map((gameEle) => <GameCard game={gameEle} key={gameEle.id} sendTitle={changeTitle}/>)}
       </GameList>
     </Container>
   )
 }
-export default App
+export default App;
