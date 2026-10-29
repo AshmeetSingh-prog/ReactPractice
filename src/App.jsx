@@ -39,24 +39,29 @@ function App() {
   function getFilterDate(data) {
     setFilterDate(data)
   }
-  function changeTitle(id,title){
-    setGames((prevgame)=>{
-      return prevgame.map((game)=>{
-        return game.id === id ? {...game, gname:title} : game
+  function changeTitle(id, title) {
+    setGames((prevgame) => {
+      return prevgame.map((game) => {
+        return game.id === id ? { ...game, gname: title } : game
       })
     })
   }
-  return (
-    <Container>
-      <GameForm sendForm={getForm} />
-      <Filter sendFilterDate={getFilterDate} filterDate={filterDate} />
-      <GameList>
-        {games.filter((gameEle) =>
-          filterDate === "all" ? true : gameEle.madeYr.getFullYear().toString() === filterDate
-        )
-          .map((gameEle) => <GameCard game={gameEle} key={gameEle.id} sendTitle={changeTitle}/>)}
-      </GameList>
-    </Container>
+  let content = <h2>No Data Found</h2>;
+  const filteredGames = games.filter((gameEle) =>
+    filterDate === "all" ? true : gameEle.madeYr.getFullYear().toString() === filterDate
   )
+  if (filteredGames.length !== 0) {
+    content = filteredGames.map((gameEle) => <GameCard game={gameEle} key={gameEle.id} sendTitle={changeTitle} />)
+  }
+
+return (
+  <Container>
+    <GameForm sendForm={getForm} />
+    <Filter sendFilterDate={getFilterDate} filterDate={filterDate} />
+    <GameList>
+      {content}
+    </GameList>
+  </Container>
+)
 }
 export default App;
